@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="action_school_student_profile" model="ir.actions.act_window">
+        <field name="name">Dados dos Estudantes</field>
+        <field name="res_model">school.student</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="school_student_root_menu" name="Estudantes" />
+    <menuitem id="school_student_sub_menu" action="action_school_student_profile" parent="school_student_root_menu"
+              name="Dados dos Estudantes" />
+
+    <record id="school_student_list_view" model="ir.ui.view">
+        <field name="name">school.student.list.view</field>
+        <field name="model">school.student</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="school_id" />
+                <field name="is_virtual_school" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="school_student_form_view" model="ir.ui.view">
+        <field name="name">school.student.form.view</field>
+        <field name="model">school.student</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <group>
+                        <field name="name" />
+                        <field name="currency_id" />
+                        <field name="school_id" />
+<!--                    condição para aparecer somente escolas com True | domain="[('is_virtual_class','=',True)]"-->
+                        <field name="school_address" string="School Address" />
+                        <field name="hobby_list" widget="many2many_checkboxes"/>
+                        <field name="student_fees" /> <!-- é possível transformar um float em monetary com widgets -->
+                    </group>
+
+                </group>
+            </form>
+        </field>
+    </record>
+
+</odoo>

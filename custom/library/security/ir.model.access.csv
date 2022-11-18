@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+library_admin,access.library_admin,model_library,base.group_user,1,1,1,1
+author_admin,access.author_admin,model_author_profile,base.group_user,1,1,1,1
+category_admin,access.category_admin,model_category,base.group_user,1,1,1,1

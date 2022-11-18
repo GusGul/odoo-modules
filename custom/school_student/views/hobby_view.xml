@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="action_hobby" model="ir.actions.act_window">
+        <field name="name">Hobbies</field>
+        <field name="res_model">hobby</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="hobby_sub_menu" action="action_hobby" parent="school_student.school_student_root_menu"
+              name="Hobbies" />
+
+    <record id="hobby_list_view" model="ir.ui.view">
+        <field name="name">Lista de Hobbies</field>
+        <field name="model">hobby</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="hobby_form_view" model="ir.ui.view">
+        <field name="name">hobby.form.view</field>
+        <field name="model">hobby</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="name" />
+                </group>
+            </form>
+        </field>
+    </record>
+
+</odoo>
