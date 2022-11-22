@@ -19,6 +19,7 @@
                 <field name="name" />
                 <field name="school_id" />
                 <field name="is_virtual_school" />
+                <field name="age" />
             </tree>
         </field>
     </record>
@@ -31,14 +32,19 @@
                 <group>
                     <group>
                         <field name="name" />
-                        <field name="currency_id" />
-                        <field name="school_id" />
+                        <field name="currency_id" options="{'no_create':True}" />
+<!--                        "{'no_create_edit':True, 'no_open':True, 'no_quick_create':True}"/>-->
+                        <field name="school_id" options="{'no_create':True}" /> <!-- widget="selection" -->
 <!--                    condição para aparecer somente escolas com True | domain="[('is_virtual_class','=',True)]"-->
                         <field name="school_address" string="School Address" />
                         <field name="hobby_list" widget="many2many_checkboxes"/>
                         <field name="student_fees" /> <!-- é possível transformar um float em monetary com widgets -->
+                        <field name="active" invisible="1" />
                     </group>
-
+                    <group>
+                        <field name="birthDate" />
+                        <field name="age" />
+                    </group>
                 </group>
             </form>
         </field>

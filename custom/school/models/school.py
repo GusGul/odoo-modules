@@ -41,3 +41,9 @@ class SchoolProfile(models.Model):
             else:
                 rec.auto_rank = 0
 
+    @api.model
+    def name_create(self, name):        # altera o metodo create name
+        # rtn = self.create({'name':name})
+        # rtn = self.create({"name":name,"email":"default@mail.com"})
+        # return rtn.name_get()[0]
+        return super(SchoolProfile, self).name_create(name)
