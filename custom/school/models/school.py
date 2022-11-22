@@ -1,7 +1,10 @@
 from odoo import fields, models, api
 
+
 class SchoolProfile(models.Model):
     _name = "school"
+
+    # _rec_name = "email" # isso altera o campo que aparece nas relações de outras views de "name" para o campo "email".
 
     def default_establish_date(self):
 
@@ -20,18 +23,19 @@ class SchoolProfile(models.Model):
     address = fields.Text(string="Endereço", required=True)
     establish_date = fields.Date(string="Establish Date", default=lambda lm: lm.default_establish_date())
     open_date = fields.Datetime(string="Open Date", default=lambda lm: lm.default_open_date())
-    school_type = fields.Selection([('public','Escola Pública'),
-                                    ('private','Escola Particular')],
-                                   string="Tipo de Escola") # default=
+    school_type = fields.Selection([('public', 'Escola Pública'),
+                                    ('private', 'Escola Particular')],
+                                   string="Tipo de Escola")  # default=
     documents = fields.Binary(string="Documentos")
     document_name = fields.Char(string="Nome do Arquivo")
     # Sem os "max_" e o "verify_resolution" o Image funcionará como um Binary
     school_image = fields.Image("Imagem", max_width=100, max_height=100, verify_resolution=True)
-    school_description = fields.Html(string="Descrição") # default="<b>bold</b>" pode receber tags html
+    school_description = fields.Html(string="Descrição")  # default="<b>bold</b>" pode receber tags html
     # school_rank = fields.Integer(string="Rank", required=True, size=6)
     auto_rank = fields.Integer(compute="_auto_rank_populate", string="Auto Rank", store=True)
+    school_number = fields.Integer(string="Código da Escola")
 
-    @api.depends("school_type") # transforma a atualização do compute imediata
+    @api.depends("school_type")  # transforma a atualização do compute imediata
     def _auto_rank_populate(self):
         for rec in self:
             if rec.school_type == "private":
@@ -42,8 +46,18 @@ class SchoolProfile(models.Model):
                 rec.auto_rank = 0
 
     @api.model
-    def name_create(self, name):        # altera o metodo create name
+    def name_create(self, name):  # altera o metodo create name
         # rtn = self.create({'name':name})
         # rtn = self.create({"name":name,"email":"default@mail.com"})
         # return rtn.name_get()[0]
         return super(SchoolProfile, self).name_create(name)
+
+    # com name_get, pode-se alterar um many2one tipo adicionando o tipo de escola após o nome da escola no selection
+    def name_get(self):
+        student_list = []
+        for school in self:
+            name = school.name
+            if school.school_type:
+                name += " ({})".format(school.school_type)
+            student_list.append((school.id, name))
+        return student_list

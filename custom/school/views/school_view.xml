@@ -50,6 +50,7 @@
                     </group>
                 </group>
                 <group>
+                    <field name="school_number" />
                     <field name="school_image" widget="image" invisible="1" />
                     <field name="documents" filename="document_name" />
                     <field name="document_name" invisible="1" />

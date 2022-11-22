@@ -18,6 +18,7 @@
             <tree>
                 <field name="name" />
                 <field name="school_id" />
+                <field name="currency_id" invisible="1" />
                 <field name="is_virtual_school" />
                 <field name="age" />
             </tree>
@@ -29,12 +30,14 @@
         <field name="model">school.student</field>
         <field name="arch" type="xml">
             <form>
+                <button name="custom_button_method" string="CLIQUE EM MIM!" type="object" /> <!-- sempre que estiver
+                lidando com custom methods, usa-se o type="object". -->
                 <group>
                     <group>
                         <field name="name" />
                         <field name="currency_id" options="{'no_create':True}" />
 <!--                        "{'no_create_edit':True, 'no_open':True, 'no_quick_create':True}"/>-->
-                        <field name="school_id" options="{'no_create':True}" /> <!-- widget="selection" -->
+                        <field name="school_id" /> <!-- options="{'no_create':True}" widget="selection" -->
 <!--                    condição para aparecer somente escolas com True | domain="[('is_virtual_class','=',True)]"-->
                         <field name="school_address" string="School Address" />
                         <field name="hobby_list" widget="many2many_checkboxes"/>
@@ -42,8 +45,8 @@
                         <field name="active" invisible="1" />
                     </group>
                     <group>
-                        <field name="birthDate" />
-                        <field name="age" />
+                        <field name="birthDate" attrs="{'invisible':[('student_fees','=',0)]}"/>
+                        <field name="age" readonly="1" attrs="{'invisible':[('birthDate','=','')]}" />
                     </group>
                 </group>
             </form>

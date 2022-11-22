@@ -1,5 +1,6 @@
 from odoo import fields, models, api
 
+
 class AuthorProfile(models.Model):
     _name = "author.profile"
 
