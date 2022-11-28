@@ -7,15 +7,22 @@
         <field name="view_mode">tree,form</field>
     </record>
 
-    <menuitem id="hobby_sub_menu" action="action_hobby" parent="school_student.school_student_root_menu"
-              name="Hobbies" />
+    <record id="action_car" model="ir.actions.act_window">
+        <field name="name">Motores</field>
+        <field name="res_model">car.engine</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="hobby_sub_menu" parent="school_student.school_student_root_menu" name="Menu 2"/>
+    <menuitem id="hobby_menu" action="action_hobby" parent="school_student.school_student_sub_menu" name="Hobbies"/>
+    <menuitem id="car_menu" action="action_car" parent="hobby_sub_menu" name="Motores"/>
 
     <record id="hobby_list_view" model="ir.ui.view">
         <field name="name">Lista de Hobbies</field>
         <field name="model">hobby</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="name" />
+                <field name="name"/>
             </tree>
         </field>
     </record>
@@ -26,7 +33,33 @@
         <field name="arch" type="xml">
             <form>
                 <group>
-                    <field name="name" />
+                    <field name="name"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="car_engine_list_view" model="ir.ui.view">
+        <field name="name">Lista de Motores</field>
+        <field name="model">car.engine</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="car_id"/>
+                <field name="school_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="car_engine_form_view" model="ir.ui.view">
+        <field name="name">car.engine.form.view</field>
+        <field name="model">car.engine</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="name"/>
+                    <field name="car_id"/>
+                    <field name="school_id"/>
                 </group>
             </form>
         </field>

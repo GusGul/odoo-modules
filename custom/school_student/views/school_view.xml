@@ -9,10 +9,12 @@
             <field name="documents" position="after">
                 <field name="school_list" string="Estudantes">
                     <tree editable="top">
+                        <field name="id" />
                         <field name="name" />
                     </tree>
                     <form>
                         <group>
+                            <field name="id" />
                             <field name="name" />
                         </group>
                     </form>

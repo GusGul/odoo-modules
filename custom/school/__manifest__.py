@@ -9,8 +9,12 @@
     'author': 'Gustavo Salgado Lima',
     'depends': ['base'],
     'data': [
+        "data/school_data.xml",
         "security/ir.model.access.csv",
-        "views/school_view.xml"
+        "views/school_view.xml",
+    ],
+    'demo': [
+        "demo/school_demo_data.xml",
     ],
     'aplication': True
 }
