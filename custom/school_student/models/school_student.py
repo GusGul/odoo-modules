@@ -31,6 +31,7 @@ class school_student(models.Model):
     # _sequence = "custom_seq_name"
     _order = "student_seq"
 
+    student_img = fields.Image(string="Foto de Perfil")
     state = fields.Selection([('draft', 'Aberto'),
                               ('progress', 'Em progresso'),
                               ('paid', 'Pago'),

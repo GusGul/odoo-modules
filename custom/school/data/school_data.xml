@@ -13,6 +13,10 @@
         <field name="name">Quinta Escola Quinta</field>
     </record>
 
+    <record id="school_99" model="school">
+        <field name="name">Weblearns</field>
+    </record>
+
     <!--One2many field, criado automaticamente ao criar o estudante, pois o school_list existe no school já-->
     <record id="school_6" model="school">
         <field name="name">Wakanda University</field>

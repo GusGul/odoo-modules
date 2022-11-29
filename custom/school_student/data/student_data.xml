@@ -3,7 +3,7 @@
 
     <record id="student_3" model="school.student">
         <field name="name">Harsh Dhadhuk</field>
-        <field name="school_id" ref="school.school_3"/>
+        <field name="school_id" ref="school.school_99"/>
         <field name="student_fees">750.50</field>
         <field name="birthDate">2000-12-31</field>
     </record>
