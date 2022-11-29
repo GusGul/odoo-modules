@@ -7,21 +7,33 @@
         <field name="view_mode">tree,form</field>
     </record>
 
-    <record id="action_car" model="ir.actions.act_window">
+    <record id="action_car_engine" model="ir.actions.act_window">
         <field name="name">Motores</field>
         <field name="res_model">car.engine</field>
         <field name="view_mode">tree,form</field>
+
     </record>
 
-    <menuitem id="hobby_sub_menu" parent="school_student.school_student_root_menu" name="Menu 2"/>
-    <menuitem id="hobby_menu" action="action_hobby" parent="school_student.school_student_sub_menu" name="Hobbies"/>
-    <menuitem id="car_menu" action="action_car" parent="hobby_sub_menu" name="Motores"/>
+    <record id="action_car" model="ir.actions.act_window">
+        <field name="name">Carros</field>
+        <field name="res_model">car</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!--    <menuitem id="hobby_sub_menu" parent="school.school_student_root_menu" name="Menu 2"/>-->
+    <menuitem id="hobby_menu" action="action_hobby" parent="school_student.school_student_sub_menu"
+              name="Lista de Hobbies"/>
+
+    <menuitem id="car_submenu" name="Menu Carros" parent="school.school_root_menu"/>
+    <menuitem id="car_menu" action="action_car" parent="car_submenu" name="Carros"/>
+    <menuitem id="car_engine_menu" action="action_car_engine" parent="car_submenu" name="Motores"/>
 
     <record id="hobby_list_view" model="ir.ui.view">
         <field name="name">Lista de Hobbies</field>
         <field name="model">hobby</field>
         <field name="arch" type="xml">
-            <tree>
+            <tree default_order="name, id asc">
+                <field name="id"/>
                 <field name="name"/>
             </tree>
         </field>
@@ -32,9 +44,11 @@
         <field name="model">hobby</field>
         <field name="arch" type="xml">
             <form>
-                <group>
-                    <field name="name"/>
-                </group>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
             </form>
         </field>
     </record>
@@ -60,6 +74,30 @@
                     <field name="name"/>
                     <field name="car_id"/>
                     <field name="school_id"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="car_list_view" model="ir.ui.view">
+        <field name="name">Lista de Carros</field>
+        <field name="model">car</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="price"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="car_form_view" model="ir.ui.view">
+        <field name="name">car.form.view</field>
+        <field name="model">car</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="name"/>
+                    <field name="price"/>
                 </group>
             </form>
         </field>

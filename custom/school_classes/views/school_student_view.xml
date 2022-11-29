@@ -4,7 +4,7 @@
     <record id="school_student_extend_form_view" model="ir.ui.view">
         <field name="name">school.student.extend.form.view</field>
         <field name="model">school.student</field>
-        <field name="inherit_id" ref="school_student.school_student_form_view"/>
+        <field name="inherit_id" ref="school_student.school_student_form_view_demo"/>
         <field name="arch" type="xml">
             <field name="hobby_list" position="after">
                 <field name="classes_ids" string="Aulas">

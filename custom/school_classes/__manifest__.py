@@ -15,5 +15,5 @@
         "views/school_student_view.xml",
     ],
     'demo': [ ],
-    'aplication': True
+    'application': True
 }

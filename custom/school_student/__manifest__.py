@@ -19,5 +19,5 @@
         "views/hobby_view.xml",
         "wizard/student_fees_update_wizard_view.xml",
     ],
-    'aplication': True
+    'application': True
 }

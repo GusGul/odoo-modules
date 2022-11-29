@@ -29,9 +29,15 @@ class school_student(models.Model):
         ('unique_name', 'unique (name)', 'Erro: Por favor informe outro nome, nome dado já existe.')
     ]
     # _sequence = "custom_seq_name"
+    _order = "student_seq"
 
+    state = fields.Selection([('draft', 'Aberto'),
+                              ('progress', 'Em progresso'),
+                              ('paid', 'Pago'),
+                              ('done', 'Concluído')], string="State", default='draft')
+    student_seq = fields.Integer(string="Student Sequence")
     name = fields.Char(string="Nome", required=True, copy=False)  # copy=False ao duplicar, o nome virá vazio
-    roll_number = fields.Char(string="Roll Number")
+    roll_number = fields.Char(string="RA")
     school_id = fields.Many2one("school", string="Nome da Escola", required=True,
                                 # Multiple Domains
                                 # domain="[('school_type','=','public'),
@@ -89,6 +95,10 @@ class school_student(models.Model):
                 student.age = delta
             else:
                 student.age = 0
+
+    def buttonClickEvent(self):
+
+        raise UserError(_("Nome: "+self.name))
 
     def custom_method(self):
         try:

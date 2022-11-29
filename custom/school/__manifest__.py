@@ -16,5 +16,5 @@
     'demo': [
         "demo/school_demo_data.xml",
     ],
-    'aplication': True
+    'application': True
 }

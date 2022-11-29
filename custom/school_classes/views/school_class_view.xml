@@ -30,7 +30,7 @@
                         </field>
                     </group>
                     <group></group>
-                    
+
                 </group>
             </form>
         </field>
@@ -42,8 +42,9 @@
         <field name="view_mode">tree,form</field>
     </record>
 
-    <menuitem id="school_class_root_menu" name="Aulas" web_icon="school_classes,static/description/icon.png"/>
-    <menuitem id="school_class_submenu" name="Menu" parent="school_class_root_menu" />
-    <menuitem id="school_class_menu" name="Lista de Aulas" parent="school_class_submenu" action="action_school_class"/>
+    <!--    <menuitem id="school_class_root_menu" name="Aulas" web_icon="school_classes,static/description/icon.png"/>-->
+    <!--    <menuitem id="school_class_submenu" name="Menu" parent="school.school_root_menu" />-->
+    <menuitem id="school_class_menu" name="Lista de Aulas" parent="school_student.school_student_sub_menu"
+              action="action_school_class"/>
 
 </odoo>
