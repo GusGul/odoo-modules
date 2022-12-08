@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <template id="school_student_profile_report_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="qweb_pdf_report_example.sub_student_template"/>
+            </t>
+        </t>
+    </template>
+
+    <!--    em outro xml, pode criar um inherit com:
+    <template inherit_id="id" id="id_extend"> e <xpath expr="" position="">-->
+    <template id="sub_student_template">
+        <t t-call="web.external_layout">
+            <div class="page">
+                <!--                <p t-attf-style="background-color:#{doc.field_cor};">-->
+                <!--                   Teste...-->
+                <!--                </p>-->
+                <p t-attf-style="background-color:{{'blue' if doc.roll_number else 'red'}};">
+                    Hello friends hope you doing well...
+                </p>
+                <a t-att-href="doc.school_id.email">Email da Escola</a>
+
+                Sub template.
+                <t t-call="qweb_pdf_report_example.sub_dataoutput_related_template"/>
+                <t t-call="qweb_pdf_report_example.sub_conditional_related_template"/>
+                <t t-call="qweb_pdf_report_example.sub_looping_related_template"/>
+                <t t-call="qweb_pdf_report_example.sub_variable_related_template"/>
+            </div>
+        </t>
+    </template>
+
+    <template id="sub_dataoutput_related_template">
+        Sub data output
+        <!--        <h1>Hello How are you?</h1>-->
+        <!--        <h1 t-field="doc.name"/>-->
+        <!--        <h3 t-esc="doc.name"/>-->
+        <!--        <h5 t-esc="doc.name"/>-->
+        <!--        <p t-esc="doc.name"/>-->
+    </template>
+
+    <template id="sub_conditional_related_template">
+        Sub conditional
+        <!--        <p t-if="doc.name == 'Harsh Dhadhuk'">Achamos o indiano-->
+        <!--            <span t-esc="doc.name"/>-->
+        <!--        </p>-->
+        <!--        <p t-elif="doc.name == 'Juninho Primeiro'">Esse é o 1º-->
+        <!--            <span t-esc="doc.name"/>-->
+        <!--        </p>-->
+        <!--        <p t-else="">Não achamos o indiano, apenas o-->
+        <!--            <span t-esc="doc.name"/>-->
+        <!--        </p>-->
+    </template>
+
+    <template id="sub_looping_related_template">
+        Sub looping
+        <!--        <t t-foreach="doc.school_id.school_list" t-as="rct">-->
+        <!--            <h4 t-esc="rct.name"/>-->
+        <!--            <p>Index:-->
+        <!--                <span t-esc="rct_index"/>-->
+        <!--            </p>-->
+        <!--            <p>First Index?-->
+        <!--                <span t-esc="rct_first"/>-->
+        <!--            </p>-->
+        <!--            <p t-esc="rct"/>-->
+        <!--            <p>Even or Odd:-->
+        <!--                <span t-esc="rct_parity"/>-->
+        <!--            </p>-->
+        <!--            <p>Even:-->
+        <!--                <span t-esc="rct_even"/>-->
+        <!--            </p>-->
+        <!--            <p>Odd:-->
+        <!--                <span t-esc="rct_odd"/>-->
+        <!--            </p>-->
+        <!--        </t>-->
+    </template>
+
+    <template id="sub_variable_related_template">
+        Sub variables
+        <!--        <t t-set="a" t-value="1234"/>-->
+        <!--        <t t-set="nome" t-value="doc.name"/>-->
+        <!--        <t t-esc="a"/>-->
+        <!--        <t t-esc="nome"/>-->
+    </template>
+
+
+    <record id="student_custom_report_paperformat" model="report.paperformat">
+        <field name="name">Student Custom Paper Format</field>
+        <field name="format">A4</field>
+        <field name="orientation">Landscape</field>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="margin_top">5</field>
+        <field name="margin_bottom">5</field>
+        <field name="margin_left">5</field>
+        <field name="margin_right">5</field>
+        <field name="header_spacing">35</field>
+        <field name="dpi">90</field>
+    </record>
+
+
+    <record id="school_student_profile_report_action" model="ir.actions.report">
+        <field name="name">Student Card</field>
+        <field name="model">school.student</field>
+        <field name="report_type">qweb-pdf</field> <!-- AQUI ESCOLHA html OU pdf. -->
+        <field name="report_name">qweb_pdf_report_example.school_student_profile_report_template</field>
+        <field name="report_file">qweb_pdf_report_example.school_student_profile_report_template</field>
+        <field name="print_report_name">'Student-Card'</field> <!-- pdf name -->
+        <field name="binding_model_id" ref="school_student.model_school_student"/>
+        <field name="binding_type">report</field>
+<!--        <field name="paperformat_id" ref="qweb_pdf_report_example.student_custom_report_paperformat"/>-->
+    </record>
+
+</odoo>

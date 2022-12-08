@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <!--access rights xml ao invés de csv-->
+    <record id="school_admin" model="ir.model.access">
+        <field name="name">School Admin</field>
+        <field name="model_id" ref="model_school"/>
+        <field name="group_id" ref="school.access_school_group"/>
+        <field name="perm_read">1</field>
+        <field name="perm_create">1</field>
+        <field name="perm_write">1</field>
+        <field name="perm_unlink">1</field>
+    </record>
+
+    <!--record rule-->
+<!--    <record id="access_for_student_profile" model="ir.rule">-->
+<!--        <field name="name">Access Student Profile</field>-->
+<!--        <field name="model_id" ref="model_school"/>-->
+<!--        <field name="domain_force">[('create_uid', '=', user.id)]</field>-->
+<!--    </record>-->
+
+
+
+</odoo>

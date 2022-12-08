@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="school_3" model="school">
+        <field name="name">Terceirão</field>
+        <field name="email">email@odoo.com</field>
+        <field name="phone">(99)99999-9999</field>
+        <field name="is_virtual_class">1</field>
+        <field name="school_type">public</field>
+    </record>
+
+    <record id="school_4" model="school">
+        <field name="name">Quarteirão</field>
+        <field name="email">email@odoo.com</field>
+        <field name="phone">(99)99999-9999</field>
+        <field name="is_virtual_class">0</field>
+        <field name="school_type">private</field>
+    </record>
+
+    <record id="school_5" model="school">
+        <field name="name">Quinta Escola Quinta</field>
+        <field name="email">email@odoo.com</field>
+        <field name="phone">(99)99999-9999</field>
+        <field name="is_virtual_class">0</field>
+        <field name="school_type">private</field>
+    </record>
+
+    <record id="school_99" model="school">
+        <field name="name">Weblearns</field>
+        <field name="email">weblearns@odoo.com</field>
+        <field name="phone">(12)12345-6789</field>
+        <field name="is_virtual_class">1</field>
+        <field name="school_type">public</field>
+    </record>
+
+    <!--One2many field, criado automaticamente ao criar o estudante, pois o school_list existe no school já-->
+    <record id="school_6" model="school">
+        <field name="name">Wakanda University</field>
+        <field name="email">email@odoo.com</field>
+        <field name="phone">(99)99999-9999</field>
+        <field name="is_virtual_class">0</field>
+        <field name="school_type">public</field>
+    </record>
+
+</odoo>

@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+school_student_admin,access.school_student_admin,model_school_student,base.group_user,1,1,1,1
+hobby_admin,access.hobby_admin,model_hobby,base.group_user,1,1,1,1
+car_engine_admin,access.car_engine_admin,model_car_engine,base.group_user,1,1,1,1
+car_admin,access.car_admin,model_car,base.group_user,1,1,1,1
+student_fees_update_admin,access.student_fees_update_admin,model_student_fees_update_wizard,base.group_user,1,1,1,1

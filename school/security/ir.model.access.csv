@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+school_user,access.school_user,model_school,base.group_user,1,0,0,0
+school_low_level_user,access.low_user,model_school,school.access_school_low_level_group,1,1,0,0
+school_mid_level_user,access.mid_user,model_school,school.access_school_mid_level_group,1,1,1,0
+school_admin_level_user,access.admin_user,model_school,school.access_school_admin_level_group,1,1,1,1

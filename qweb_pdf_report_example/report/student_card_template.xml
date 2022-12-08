@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <template id="student_card_pdf_template_report">
+        <t t-call="web.basic_layout">
+            <div class="page">
+                <t t-foreach="docs" t-as="student">
+                    <div class="col-md-6">
+                        <table style="width:240pt; height:150pt; border: 1pt solid black; border-collapse:separate;
+                                      border-radius:8pt; margin:5pt;">
+                            <tr>
+                                <td>
+                                    <!--<img t-if="student.student_img" t-att-src="image_data_uri(student.student_img)"-->
+                                    <!--    style="max-height:80pt;max-width:80pt;" alt="Student Image"/>-->
+                                    <div t-field="student.student_img"
+                                         t-options="{'widget':'image','img_style':'width:50px;height:50px;','width':50,'height':50}"/>
+
+                                    <!--QR, EAN13, EAN8, Code128, UPCA-->
+                                    <!--<img t-att-src="'/report/barcode/QR/%s'%(student.name)" width="50" height="50"-->
+                                    <!--    alt="Barcode"/>-->
+                                    <!--<img t-att-src="'/report/barcode/EAN13/%s'%(student.name)" width="90" height="90"-->
+                                    <!--     alt="Barcode"/>-->
+                                    <!--<div t-field="student.name"-->
+                                    <!--     t-options="{1widget':'barcode', 'symbology':'QR', 'width':50px, 'height':50px, 'img_style':'width:100%;height:30px;'}"/>-->
+
+                                    <!--<img src="/qweb_pdf_report_example/static/description/icon.png"-->
+                                    <!--    alt="Logo icon." height="50" width="50"/>-->
+                                </td>
+                                <td>
+                                    <table>
+                                        <tr>
+                                            <th>
+                                                <t t-esc="student.name"/>
+                                            </th>
+                                            <th>
+                                                <t t-esc="student.school_id.name"/>
+                                            </th>
+                                            <th>
+                                                <t t-esc="student.roll_number"/>
+                                            </th>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+
+                        </table>
+                    </div>
+                </t>
+            </div>
+        </t>
+    </template>
+
+    <record id="school_student_profile_card_report" model="ir.actions.report">
+        <field name="name">Student Card Print</field>
+        <field name="model">school.student</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">qweb_pdf_report_example.student_card_pdf_template_report</field>
+        <field name="report_file">qweb_pdf_report_example.student_card_pdf_template_report</field>
+        <field name="print_report_name">'Student Card'</field>
+        <field name="binding_model_id" ref="school_student.model_school_student"/>
+        <field name="binding_type">report</field>
+    </record>
+
+</odoo>

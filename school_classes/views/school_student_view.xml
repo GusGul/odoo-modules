@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="school_student_extend_form_view" model="ir.ui.view">
+        <field name="name">school.student.extend.form.view</field>
+        <field name="model">school.student</field>
+        <field name="inherit_id" ref="school_student.school_student_form_view_demo"/>
+        <field name="arch" type="xml">
+            <field name="hobby_list" position="after">
+                <field name="classes_ids" string="Aulas">
+                    <tree>
+                        <field name="id"/>
+                        <field name="name"/>
+                    </tree>
+                </field>
+            </field>
+        </field>
+    </record>
+
+</odoo>

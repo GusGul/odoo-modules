@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="student_email_template" model="mail.template">
+        <field name="name">Modelo de Email para Estudante</field>
+        <field name="model_id" ref="school_student.model_school_student"/>
+        <field name="subject">Email Subject</field>
+        <field name="partner_to">{{ object.create_uid.partner_id.id }}</field>
+        <field name="email_from">{{ object.school_id.email }}</field>
+        <field name="body_html" type="xml">
+            <t t-set="stud_age" t-value="object.get_custom_vals_by_email_template()"/>
+            <div t-field="object.student_img"
+                 t-options="{'widget':'image'}" style="height:100px;width:100px;object-fit:contain;"/>
+            <table class="table">
+                <tr>
+                    <th>Nome</th>
+                    <th>Escola</th>
+                    <th>Mensalidade Total</th>
+                    <th>Idade</th>
+                </tr>
+                <tr>
+                    <td><span t-out="object.name"/></td>
+                    <td><span t-out="object.school_id.name"/></td>
+                    <td><span t-out="object.total_fees"/></td>
+                    <td><span t-out="stud_age"/></td>
+                </tr>
+            </table>
+            <t t-if="object.hobby_list">
+                <table class="table">
+                    <tr>
+                        <th>Hobbies</th>
+                    </tr>
+                    <t t-foreach="object.hobby_list" t-as="hobby">
+                        <tr>
+                            <td><span t-field="hobby.name"/></td>
+                        </tr>
+                    </t>
+                </table>
+            </t>
+            <table class="table">
+                <tr>
+                    <th>Estudantes da escola - <span t-out="object.school_id.name"/></th>
+                    <th>Foto</th>
+                </tr>
+                <t t-foreach="object.school_id.school_list" t-as="stud">
+                    <tr>
+                        <td>
+                            <div t-field="stud.student_img" t-options="{'widget':'image'}"
+                                 style="height:50px;width:50px;object-fit:contain;"/>
+                        </td>
+                        <td><span t-field="stud.name"/></td>
+                    </tr>
+                </t>
+            </table>
+        </field>
+    </record>
+
+</odoo>

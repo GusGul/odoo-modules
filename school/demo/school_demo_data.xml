@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record model="school" id="demo_school_1">
+        <field name="name">Escola Demo - 1</field>
+        <field name="auto_rank">11</field>
+    </record>
+
+    <record model="school" id="demo_school_2">
+        <field name="name">Escola Demo - 2</field>
+        <field name="auto_rank">12</field>
+    </record>
+
+    <record model="school" id="demo_school_3">
+        <field name="name">Escola Demo - 3</field>
+        <field name="auto_rank">13</field>
+    </record>
+
+    <record model="school" id="demo_school_4">
+        <field name="name">Escola Demo - 4</field>
+        <field name="auto_rank">14</field>
+    </record>
+
+    <record model="school" id="demo_school_5">
+        <field name="name">Escola Demo - 5</field>
+        <field name="auto_rank">15</field>
+    </record>
+
+</odoo>

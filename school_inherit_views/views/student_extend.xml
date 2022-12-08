@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <!--        <record id="student_list_view_extend" model="ir.ui.view">-->
+    <!--            <field name="name">student.list.view.extend</field>-->
+    <!--            <field name="model">school.student</field>-->
+    <!--            <field name="inherit_id" ref="school_student.school_student_list_view_demo"/>-->
+    <!--            <field name="arch" type="xml">-->
+    <!--                <field name="student_seq" position="after">-->
+    <!--                    <field name="write_date"/>-->
+    <!--                </field>-->
+    <!--                &lt;!&ndash;AMBOS AS 2 TAGS ABAIXO PODEM FAZER INHERIT/EXTEND&ndash;&gt;-->
+    <!--                <field></field> &lt;!&ndash; Field level - -->
+    <!--                after,-->
+    <!--                before,-->
+    <!--                inside,-->
+    <!--                replace,-->
+    <!--                attributes &ndash;&gt;-->
+    <!--                <xpath></xpath> &lt;!&ndash; Xpath &ndash;&gt;-->
+    <!--            </field>-->
+    <!--        </record>-->
+
+    <!--    <record id="student_form_view_extend" model="ir.ui.view">-->
+    <!--        <field name="name">student.form.view.extend</field>-->
+    <!--        <field name="model">school.student</field>-->
+    <!--        <field name="inherit_id" ref="school_student.school_student_form_view_demo"/>-->
+    <!--        <field name="arch" type="xml">-->
+    <!--            <h1>Olá</h1>-->
+    <!--            <field name="student_seq" position="after">-->
+    <!--                <field name="write_date"/>-->
+    <!--            </field>-->
+    <!--        </field>-->
+    <!--    </record>-->
+
+    <record id="student_form_inherit_view" model="ir.ui.view">
+        <field name="name">student.form.inherit.view</field>
+        <field name="model">school.student</field>
+        <field name="inherit_id" ref="school_student.school_student_form_view_demo"/>
+        <field name="arch" type="xml">
+            <!--            <xpath expr="//form//sheet" position="inside">-->
+            <!--                <group id="write_information">-->
+            <!--                    <field name="write_uid"/>-->
+            <!--                    <field name="write_date"/>-->
+            <!--                </group>-->
+            <!--            </xpath>-->
+
+            <!--            <xpath expr="//form//sheet//notebook//page[2]//group[1]//field[@name='hobby_list']" position="after">-->
+            <!--                <field name="write_uid"/>-->
+            <!--                <field name="write_date"/>-->
+            <!--            </xpath>-->
+            <xpath expr="//field[@name='hobby_list']" position="before">
+                <field name="write_uid"/>
+                <field name="write_date"/>
+            </xpath>
+            <!--            <xpath expr="//page[2]//group[1]" position="inside">-->
+            <!--                <field name="write_uid"/>-->
+            <!--                <field name="write_date"/>-->
+            <!--            </xpath>-->
+
+            <xpath expr="//notebook" position="inside">
+                <page string="Extended Page">
+                    <group>
+                        <field name="write_uid"/>
+                        <field name="write_date"/>
+                    </group>
+                </page>
+            </xpath>
+
+            <xpath expr="//group[@id='student_monetary_data']" position="inside">
+                <field name="write_date" string="Extended Field"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="student_form_inherit_view_attributes" model="ir.ui.view">
+        <field name="name">student.form.inherit.view.attributes</field>
+        <field name="model">school.student</field>
+        <field name="inherit_id" ref="school_student.school_student_form_view_demo"/>
+        <field name="arch" type="xml">
+            <field name="name" position="attributes">
+                <attribute name="required">1</attribute>
+            </field>
+        </field>
+    </record>
+
+</odoo>

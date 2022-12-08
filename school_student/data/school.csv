@@ -1,0 +1,3 @@
+id,name,email,phone,is_virtual_class,school_type
+school_1,"Escola Primeira",email@odoo.com,(99)99999-9999,True,public
+school_2,"ITA",email@odoo.com,(99)99999-9999,False,private
