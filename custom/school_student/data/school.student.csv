@@ -1,4 +1,0 @@
-id,name,school_id:id,student_fees,birthDate,hobby_list:id
-student_1,"Juninho Primeiro",school_1,900,"2001-01-01",hobby_1
-student_2,"Antonio Ramos",school_2,850,"2002-02-02","hobby_2,hobby_4,hobby_11,hobby_21"
-student_teste_2,"Dalila Lilila",school_1,1700.99,"2003-01-10","hobby_1,hobby_19"
